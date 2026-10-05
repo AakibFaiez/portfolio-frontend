@@ -9,11 +9,11 @@ function App() {
   const [status, setStatus] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/profile')
+    fetch('https://portfolio-api-oy4y.onrender.com/api/profile')
     .then((response) => response.json())
     .then((data) => setprofile(data));
 
-    fetch('http://localhost:8080/api/projects')
+    fetch('https://portfolio-api-oy4y.onrender.com/api/projects')
     .then((response) => response.json())
     .then((data) => setprojects(data));
 },[]);
@@ -22,7 +22,7 @@ function App() {
   event.preventDefault();
   setStatus('Sending...');
   
-  fetch('http://localhost:8080/api/contact', {
+  fetch('https://portfolio-api-oy4y.onrender.com/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, message })
