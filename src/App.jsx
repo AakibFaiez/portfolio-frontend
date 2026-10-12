@@ -48,51 +48,61 @@ if (!profile) {
 }
 
 return(
-<div>
-  <h1>{profile.name}</h1>
-  <h2>{profile.title}</h2>
-  <p>{profile.bio}</p>
+<div className="container">
+  <header className="hero">
+    <h1>{profile.name}</h1>
+    <p className="title">{profile.title}</p>
+    <p className="bio">{profile.bio}</p>
+  </header>
 
+<section>
   <h2>Projects</h2>
-  <ul>
+  <ul className="project-list">
       {projects.map((project) => (
-        <li key={project.title}>
+        <li key={project.title} className="project-card">
           <h3>{project.title}</h3>
           <p>{project.description}</p>
-          <p><em>{project.techStack}</em></p>
-          <a href={project.link}>View on GitHub</a>
+          <p className="tech">{project.techStack}</p>
+          <a href={project.link} target="_blank" rel="noreferrer">
+          View on GitHub →
+        </a>
           </li>
       ))}
   </ul>
-
+</section>
+<section>
   <h2>Contact Me</h2>
-  <form onSubmit={handleSubmit}>
-    <div>
-      <label>Name:</label>
+  <form className="contact-form" onSubmit={handleSubmit}>
+     <div className="form-field">
+      <label htmlFor="name">Name</label>
       <input 
+      id="name"
       type="text"
       value={name}
       onChange={(e) => setName(e.target.value)}
       />
     </div>
-    <div>
-      <label>Email:</label>
+    <div className="form-field">
+      <label htmlFor="email">Email</label>
           <input
+          id="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
     </div>
-    <div>
-          <label>Message:</label>
+    <div className="form-field">
+          <label htmlFor="message">Message</label>
           <textarea
+            id="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
     </div>
     <button type="submit">Send</button>
       </form>
-      {status && <p>{status}</p>}
+      {status && <p className="form-status">{status}</p>}
+</section>
 </div>
 );
 }
